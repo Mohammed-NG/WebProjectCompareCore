@@ -1,14 +1,20 @@
 header {
+    height: 80px;
     background-color: #000000;
     border: 0px;
     margin-top: 0px;
     padding: 0px;
+    display: flex; /* Enable flexbox */
+
+
 }
-a{
+header a{
     text-decoration: none;
     color: #FFFFFF;
     font-size: 18pt;
+    font-family: 'Montserrat', sans-serif ;
     font-weight: bold;
+    
 }
 #heart{
     height: 25px;
@@ -20,4 +26,67 @@ a{
     width: 25px;
 }
 
+/* Search Bar with Icon */
+.search-wrapper {
+    position: relative; /* Set the wrapper to position its children */
+    display: flex;
+    align-items: center;
+    margin: 0 20px; /* Space before the next element */
+  }
+  
+  input[type="text"] {
+    width: 250px; /* Adjust width to match the design */
+    padding: 10px 40px 10px 20px; /* Adjust padding to make space for the icon */
+    border: none; /* No border */
+    border-radius: 20px; /* Rounded corners */
+    font-size: 1em; /* Adjust font-size to match the design */
+  }
+  
+  /* Placeholder styling */
+  input[type="text"]::placeholder {
+    color: #aaa; /* Light grey placeholder text, adjust as needed */
+  }
+  
+  /* Icon styling */
+  .search-icon {
+    position: absolute;
+    right: 10px; /* Adjust the value to position the icon correctly */
+    width: 24px; /* Icon size */
+    height: 24px;
+  }
+  
+  /* Style adjustments for responsive layout or specific states can be added here */
+  #Goright{
+    display: flex; /* Enable flexbox */
+    justify-content: right; /* Center items horizontally */
+    align-items: right; /* Center items vertically */
+  }
 
+
+
+
+
+
+
+
+
+  /* Footer */
+  footer {
+    background-color: #000000; /* Dark background */
+    color: #fff; /* White text */
+    display: flex; /* Enable flexbox */
+    justify-content: right; /* Center items horizontally */
+    align-items: right; /* Center items vertically */
+    padding: 9px 17px; /* Spacing above and below the content */
+    padding-right: 96px;
+  }
+  
+  footer p {
+    margin-right: 20px; /* Spacing between the text and images */
+  }
+  
+  footer img {
+    margin: 0 10px; /* Spacing between icons */
+    height: 25px;
+    width: 25px;
+  }
