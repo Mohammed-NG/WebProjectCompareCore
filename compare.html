@@ -3,60 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<header>
-    <a href="Homepage.html" id="comparecore"> Compare Core</a>
-    <a href="Homepage.html" id="compare"> Compare </a>
-    <a href="Homepage.html" id="About"> About</a>
-    <input type="text" placeholder="Search">
-    <img src="assests/heart.png" id="heart" alt="heartlogo">
-    <img src="assests/user.png" id="user" alt="userlogo">
-</header>
+
+<!--Start Navigautio part-->
+<nav class="navbar navbar-expand navbar-dark" style="background-color: black;">
+    <div class="container" >
+        <a href="Homepage.html" class="navbar-brand">Compare Core</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: black; border-color: black;">
+                    About
+                  </button>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Welcome to CompareCore!
+                        </h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Founded in 2024, CompareCore is your premier online destination for comparing electronic devices. Our mission is simple: to help you make informed purchasing
+                             decisions by providing comprehensive, accurate, and unbiased comparisons of the latest electronic products.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link">Compare</a>
+           </li>
+           <li class="nav-item py-2 px-2">
+            <a href="favorite.html">
+            <img src="assests/heart.png" width="25" alt="mobilelogo">
+            </a>
+        </li>
+        <li class="nav-item py-2 px-2">
+            <a href="Homepage.html">
+            <img src="assests/user.png" width="25" alt="userlogo">
+            </a>
+        </li>
+        </ul>
+
+    </div>
+    
+</nav>
+<!--End Navigautio part-->
 
 <body>
-    <div>
-        <div>
-            <ul id="TypeOfDevice">
-                <li id="FirstType">
-                    <div >
-                        <img src="assests/MobileIcon.png" width="18" alt="mobilelogo">
-                        Mobiles
-                    </div>
-                </li>
-                <li id="SecondType">
-                    <div>
-                        <img src="assests/LaptopIcon.png" width="18" alt="laptoplogo">
-                        Laptops
-                    </div>
-                    
-                </li>
-                <li id="ThirdType">
-                    <div>
-                        <img src="assests/CameraIcon.png" width="18" alt="camera logo">
-                        Cameras
+    <div class="container my-4" style="background-color: white;">
+        <!--begin the list for types-->
+        <div class="container py-3">
+            <div class="row py-3 mx-auto justify-content-center">
+                
+                <div class="col-auto">
+                    <button type="button" id="btn1" class="btn btn-outline-secondary btn-lg rounded-5 d-flex align-items-center" style="color:#888B97;">
+                        <span class="p-2 align-items-center d-flex"><img src="assests/MobileIcon.png" width="25" alt="mobileIcon" >
+                        </span> Mobiles </button>
+                </div>
+
+                <div class="col-auto">
+                    <button type="button" id="btn2" class="btn btn-outline-secondary btn-lg rounded-5 d-flex align-items-center" style="color: #888B97;">
+                        <span class="p-2 align-items-center d-flex"><img src="assests/LaptopIcon.png" width="25" alt="LaptopIcon" >
+                        </span> Laptop </button>
+                    </div>    
+                
+
+                <div class="col-auto">
+                    <button type="button" id="btn3" class="btn btn-outline-secondary btn-lg rounded-5 d-flex align-items-center" style="color: #888B97;">
+                        <span class="p-2 align-items-center d-flex"><img src="assests/CameraIcon.png" width="25" alt="CameraIcon" >
+                        </span> Camera </button>
                     </div>
     
-                </li>
-                <li id="ForthType">
-                    <div>
-                        <img src="assests/HeadPhones.png" width="18" alt="headphonelogo">
-                        HeadPhones
-                    </div>
-                </li>
-            </ul>
+                <div class="col-auto">
+                    <button type="button" id="btn4" class="btn btn-outline-secondary btn-lg rounded-5 d-flex align-items-center" style="color: #888B97;">
+                        <span class="p-2 align-items-center d-flex"><img src="assests/HeadPhones.png" width="25" alt="HeadPhones">
+                        </span> HeadPhone </button>
+                </div>
+            </div>
+        </div>
+        <!--End the list for types-->
+    <div class="container" style="padding-bottom: 20px;">
+        <div class="row py-2" style="border-bottom: black solid;">
+            <p style="font-weight: bold; font-size: xx-large;">Device One:       <select name="Brand1dev1" id="typeodDeviceis1" class="col-2 rounded-5" style="margin-left: 200px; background-color: #E8E8E8;"></select> <select name="typ" id="typeodDeviceis3" class="col-2 rounded-5"  style="margin-left: 150px; background-color: #E8E8E8;"></select> </p>
+        </div>
+        <div class="row" style="padding-top: 20px;">
+            <p style="font-weight: bold; font-size: xx-large;">Device Two:      <select name="Brand1dev2" id="typeodDeviceis2" class="col-2  rounded-5" style="margin-left: 200px; background-color: #E8E8E8;"></select> <select name="typ" id="typeodDeviceis4" class="col-2 rounded-5" style="margin-left: 150px; background-color: #E8E8E8;" ></select> </p>
+        </div>
     </div>
-    <div>
-        <p>Device One:       <select name="Brand1dev1" id="typeodDeviceis1"></select> <select name="typ" id="typeodDeviceis3"></select> </p>
     </div>
-    <div>
-        <p>Device Two:      <select name="Brand1dev2" id="typeodDeviceis2"></select> <select name="typ" id="typeodDeviceis4"></select> </p>
-    </div>
-    </div>
+    
+
+
+
+
 <!-- second div -->
     
-    <div>
-       <div><p>Device One: <img src="assests/sumsungs24.png" id="miniphoto1" alt="miniphoto"> </p> <p>Device Two: <img src="assests/sumsungs24.png" id="miniphoto2" alt="miniphoto"> </p></div> 
+    <div class="container">
+       <div><p>Device One: <img src="assests/sumsungs24.png" id="miniphoto1" alt="miniphoto" width="25px"> </p> <p>Device Two: <img src="assests/sumsungs24.png" id="miniphoto2" alt="miniphoto" width="25px"> </p></div> 
     
        <!-- Compare box -->
        <div>
