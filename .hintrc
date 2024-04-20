@@ -4,8 +4,10 @@
   ],
   "hints": {
     "axe/forms": [
-
-    ],
-    "axe/name-role-value": "off"
+      "default",
+      {
+        "select-name": "off"
+      }
+    ]
   }
 }
