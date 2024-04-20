@@ -10,29 +10,45 @@
 </head>
 
 <style>
-    
+
 </style>
 <header>
     
     <div class="container">
-        <div class="row justify-content-center align-items-center mx-auto p-3">
-            <div class="col-sm-2">
+        <div class="row justify-content-center align-items-center p-3 gx-5">
+            
+            <div class="col-auto">
                 <a href="Homepage.html" id="comparecore" class="m-"> Compare Core</a>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-md-6 col-sm-4">
                 <div class="search-wrapper">
                     <input type="text" placeholder="Search">
                     <img src="assests/SearchLogo.png" class="search-icon" alt="Search">
                 </div>
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-auto">
+                <div class="row">
+                    <div class="col gx-1">
+                        <a href="Homepage.html" id="compare"> Compare </a>
+                    </div>
+
+                    <div class="col">
+                        <a href="Homepage.html" id="About"> About</a>
+                    </div>
+
+                    <div class="col">
+                        <img src="assests/heart.png" id="heart" alt="heartlogo">
+                    </div>
+                    
+                    <div class="col">
+                        <img src="assests/user.png" id="user" alt="userlogo">
+                    </div>
+                </div>
                 <div id="Goright">
-                    <a href="Homepage.html" id="compare"> Compare </a>
-                    <a href="Homepage.html" id="About"> About</a>
-                    <img src="assests/heart.png" id="heart" alt="heartlogo">
-                    <img src="assests/user.png" id="user" alt="userlogo">
+                    
+                    
                 </div>
             </div>
             
@@ -43,10 +59,47 @@
 </header>
 
 <body>
-    <div id="upperPart" class="upperpartplace " >
-        <h1>Welcome To Compare core</h1>
-        <h2>what do you need to complainer</h2>
-        <ul id="TypeOfDevice">
+    <div id="upperPart" class="upperpartplace" >
+        <h1 class="text-center">Welcome To Compare core</h1>
+        <h2 class="text-center p-3">what do you need to complainer</h2>
+
+
+        <div class="container">
+            <div class="row py-3 mx-auto">
+                
+                <div class="col-auto">
+                    <button type="button" id="btn1" class="btn btn-outline-secondary btn-lg rounded-5 d-flex align-items-center">
+                        <span class="p-2 align-items-center d-flex"><img src="assests/MobileIcon.png" width="25" alt="mobileIcon">
+                        </span> Mobiles </button>
+                </div>
+
+                <div class="col">
+                    <div class="col">
+                        <button type="button" id="btn1" class="btn btn-outline-secondary btn-lg rounded-5 d-flex align-items-center">
+                            <span class="p-2 align-items-center d-flex"><img src="assests/LaptopIcon.png" width="25" alt="LaptopIcon">
+                            </span> Mobiles </button>
+                    </div>    
+                </div>
+
+                <div class="col">
+                    <div class="col">
+                        <button type="button" id="btn1" class="btn btn-outline-secondary btn-lg rounded-5 d-flex align-items-center">
+                            <span class="p-2 align-items-center d-flex"><img src="assests/CameraIcon.png" width="25" alt="CameraIcon">
+                            </span> Mobiles </button>
+                    </div>
+    
+                </div>
+                <div class="col">
+                    <button type="button" id="btn1" class="btn btn-outline-secondary btn-lg rounded-5 d-flex align-items-center">
+                        <span class="p-2 align-items-center d-flex"><img src="assests/HeadPhones.png" width="25" alt="HeadPhones">
+                        </span> Mobiles </button>
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+        </div>
+        <!--             <ul id="TypeOfDevice">
             <li id="FirstType">
                 <div >
                     <img src="assests/MobileIcon.png" width="18" alt="mobilelogo">
@@ -74,6 +127,8 @@
                 </div>
             </li>
         </ul>
+             --> 
+
     </div>
 
     <div id="MidPart">

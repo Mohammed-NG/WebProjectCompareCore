@@ -1,3 +1,8 @@
+body {
+    background-color: #F6F7FB;
+  }
+
+
 header {
     height: 80px;
     background-color: #000000;
@@ -63,7 +68,14 @@ header a{
     align-items: right; /* Center items vertically */
   }
 
+#upperPart{
+    background: linear-gradient(black, #3D045A);
+    height: 250PX;
+}
 
+#btn1{
+    color: #FFFFFF;
+}
 
 
 
