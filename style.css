@@ -74,6 +74,8 @@ header a{
 #upperPart2{
   background: linear-gradient(black, #3D045A, #743857);
 
+  height: auto;
+
 }
 
 #btn1{
