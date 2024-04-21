@@ -1,3 +1,5 @@
+
+
 body {
     background-color: #F6F7FB;
   }
@@ -42,8 +44,8 @@ header a{
     width: 750px; /* Adjust width to match the design */
     padding: 10px 40px 10px 20px; /* Adjust padding to make space for the icon */
     border: none; /* No border */
-    border-radius: 20px; /* Rounded corners */
-    font-size: 1em; /* Adjust font-size to match the design */
+    
+    
   }
   
   /* Placeholder styling */
@@ -78,12 +80,13 @@ header a{
 
 }
 
-#btn1{
-    color: #FFFFFF;
+
+
+
+
+#moda{
+  padding-top: 5%;
 }
-
-
-
 
 
 
