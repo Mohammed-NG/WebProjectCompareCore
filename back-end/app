@@ -1,6 +1,9 @@
 const express = require("express");
+const phoneapi = require("gsmarena-api")
 const app = express();
 
+const deals = await gsmarena.deals.getDeals();
+console.log(deals);
 const logRequest = function(req, res, next) {
    console.log(`Request: ${req.method} for ${req.path}`);
    next();
