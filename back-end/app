@@ -1,9 +1,20 @@
 const express = require("express");
-const phoneapi = require("gsmarena-api")
+const gsmarena = require("gsmarena-api"); // Import gsmarena-api
 const app = express();
 
-const deals = await gsmarena.deals.getDeals();
-console.log(deals);
+async function getphones() {
+   const brands = await gsmarena.catalog.getBrands();
+   for (let brand of brands){
+      const devices = await gsmarena.catalog.getBrand(brand);
+
+   }
+
+   
+   const devices = await gsmarena.catalog.getBrand('apple-phones-48');
+   console.log(devices);
+   
+}
+
 const logRequest = function(req, res, next) {
    console.log(`Request: ${req.method} for ${req.path}`);
    next();
@@ -18,3 +29,5 @@ app.get("/hello", function(req, res) {
 app.listen(3000, function() {
    console.log("Listening on port 3000...");
 });
+
+console.log(getphones());
