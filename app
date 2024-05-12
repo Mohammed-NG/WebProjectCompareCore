@@ -3,9 +3,7 @@ const gsmarena = require("gsmarena-api"); // Import gsmarena-api
 const app = express();
 const path = require('path');
 async function getphones() {
-   const c = await gsmarena.deals.getDeals();
-   //const f=c[1]
-   console.log(c);
+
 }
 const accesPath = path.join(__dirname, 'HTML');
 const public_path=__dirname;
@@ -25,6 +23,7 @@ app.get("/hello", function(req, res) {
 
 app.get("/Homepage.html", function(req, res) {
    res.sendFile(path.join(accesPath,'Homepage.html'))
+   res.status(200).json({field: "value"})
 });
 
 app.get("/signIn.html", function(req, res) {
@@ -36,6 +35,13 @@ app.get("/favorite.html", function(req, res) {
    
    res.sendFile(path.join(accesPath,'favorite.html'))
    
+})
+
+app.get("/compare/data", async function (req, res) {
+   const c = await gsmarena.deals.getDeals();
+   //const f=c[1]
+   console.log(c);
+   res.json(c)
 })
 
 app.get("/compare.html", function(req, res) {
