@@ -11,7 +11,7 @@ const accesPath = path.join(__dirname, 'HTML');
 const public_path=__dirname;
 
 const logRequest = function(req, res, next) {
-   console.log(`Request: ${req.method} for ${req.path}`);
+   console.log('Request: ${req.method} for ${req.path}');
    next();
 };
 
