@@ -1,3 +1,13 @@
+async function generateChatResponse(message) {
+    try {
+       const response = await axios.post('/ask', { message });
+       return response.data.reply;
+    } catch (error) {
+       console.error('Error fetching response from ChatGPT API:', error);
+       return 'An error occurred while fetching response';
+    }
+ }
+
 document.addEventListener("DOMContentLoaded", async function () {
     const selectElement1 = document.getElementById("typeodDeviceis1");
     const selectElement3 = document.getElementById("typeodDeviceis3");

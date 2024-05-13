@@ -5,6 +5,19 @@ const gsmarena = require("gsmarena-api"); // Import gsmarena-api
 const app = express();
 const path = require('path');
 const { Console } = require("console");
+const axios = require('axios');
+const bodyParser = require('body-parser')
+
+const OpenAI = require('openai');
+const openai = new OpenAI({ apiKey: 'sk-proj-uBggfYWxx8Jaj8dXb752T3BlbkFJr6eMajJ6afixIYzQotaK' });
+const { Console } = require("console");
+
+//convert data into json file
+app.use(express.json())
+
+app.use(express.urlencoded({extended: false}))
+
+app.use(express.static("public"));
 
 //convert data into json file
 app.use(express.json())
@@ -179,6 +192,26 @@ app.post("/login", async (req, res) => {
     res.send("check");   
    }
 });
+
+app.post('/ask', async (req, res) => {
+
+
+   const { message } = req.body;
+   try {
+     const response = await openai.complete({
+       engine: 'text-davinci-002',
+       prompt: message,
+       maxTokens: 150,
+     });
+     res.json({ reply: response.choices[0].text.trim() });
+   } catch (error) {
+     console.error('Error:', error);
+     res.status(500).json({ error: 'An error occurred' });
+   }
+
+});
+
+
 
 
 app.listen(3000, function() {
