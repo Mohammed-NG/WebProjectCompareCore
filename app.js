@@ -55,6 +55,34 @@ app.get("/compare/branddata", async function (req, res) {
    res.json(brands)
 })
 
+// app.get('/compare/n', async (req, res) => {  // Use :id to denote a dynamic parameter
+//    try {
+//        const deviceId = req.id;  // Access the dynamic parameter via req.params.id
+//       //  console.log(deviceId);
+//        const deviceDetails = await gsmarena.catalog.getBrand(deviceId);
+//        res.json(deviceDetails);
+//    } catch (error) {
+//        console.error("Failed to fetch device details:", error);
+//        res.status(500).json({ error: "Failed to fetch device details" });
+//    }
+// });
+
+app.get('/compare/:id', async (req, res) => {  // Correctly define the route to accept an 'id' parameter
+   try {
+      console.log(req)
+       const deviceId = req.params.id;  // Correctly retrieve the 'id' from the route parameters
+       console.log("Requested device ID:", deviceId);
+       const deviceDetails = await gsmarena.catalog.getBrand(deviceId);
+      //  console.log(deviceDetails)
+       res.json(deviceDetails);
+   } catch (error) {
+       console.error("Failed to fetch device details:", error);
+       res.status(500).json({ error: "Failed to fetch device details" });
+   }
+});
+
+////???/
+
 app.get("/compare.html", function(req, res) {
    
    res.sendFile(path.join(accesPath,'compare.html'))
