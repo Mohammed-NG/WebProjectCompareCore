@@ -33,6 +33,13 @@ app.get("/signIn.html", function(req, res) {
    res.sendFile(path.join(accesPath,'signIn.html'))
    
 });
+
+app.get("/signUp.html", function(req, res) {
+   
+   res.sendFile(path.join(accesPath,'signUp.html'))
+   
+});
+
 app.get("/favorite.html", function(req, res) {
    
    res.sendFile(path.join(accesPath,'favorite.html'))
