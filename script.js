@@ -22,3 +22,4 @@ document.addEventListener("DOMContentLoaded", async function () {
 //     const selectElement = document.getElementById("typeodDeviceis3");
     
 // });
+//
