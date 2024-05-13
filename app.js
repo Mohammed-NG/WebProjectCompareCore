@@ -4,7 +4,9 @@ const app = express();
 const path = require('path');
 
 async function getphones() {
-/////
+   //testing
+   const device = await gsmarena.catalog.getDevice('apple_iphone_13_pro_max-11089');
+   console.log(device);
 }
 
 const accesPath = path.join(__dirname, 'HTML');
@@ -69,7 +71,6 @@ app.get("/compare/branddata", async function (req, res) {
 
 app.get('/compare/:id', async (req, res) => {  // Correctly define the route to accept an 'id' parameter
    try {
-      console.log(req)
        const deviceId = req.params.id;  // Correctly retrieve the 'id' from the route parameters
        console.log("Requested device ID:", deviceId);
        const deviceDetails = await gsmarena.catalog.getBrand(deviceId);
@@ -82,6 +83,8 @@ app.get('/compare/:id', async (req, res) => {  // Correctly define the route to 
 });
 
 ////???/
+
+
 
 app.get("/compare.html", function(req, res) {
    
