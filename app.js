@@ -2,9 +2,11 @@ const express = require("express");
 const gsmarena = require("gsmarena-api"); // Import gsmarena-api
 const app = express();
 const path = require('path');
-async function getphones() {
 
+async function getphones() {
+/////
 }
+
 const accesPath = path.join(__dirname, 'HTML');
 const public_path=__dirname;
 
@@ -24,7 +26,7 @@ app.get("/hello", function(req, res) {
 app.get("/Homepage.html", function(req, res) {
    res.sendFile(path.join(accesPath,'Homepage.html'))
    res.status(200).json({field: "value"})
-});
+});//isn't this the same as above?
 
 app.get("/signIn.html", function(req, res) {
    
@@ -43,6 +45,7 @@ app.get("/compare/data", async function (req, res) {
    console.log(c);
    res.json(c)
 })
+///API database
 
 app.get("/compare.html", function(req, res) {
    
