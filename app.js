@@ -15,8 +15,11 @@ app.use(express.static("public"));
 
 
 async function getphones() {
-/////
+   //testing
+   const device = await gsmarena.catalog.getDevice('apple_iphone_13_pro_max-11089');
+   // console.log(device);
 }
+console.log(getphones());
 
 const accesPath = path.join(__dirname, 'HTML');
 const public_path=__dirname;
@@ -58,10 +61,10 @@ app.get("/favorite.html", function(req, res) {
 })
 
 app.get("/compare/data", async function (req, res) {
-   const c = await gsmarena.deals.getDeals();
+   const data = await gsmarena.deals.getDeals();
    //const f=c[1]
-   console.log(c);
-   res.json(c)
+   console.log(data);
+   res.json(data)
 })
 ///API database
 
@@ -87,9 +90,8 @@ app.get("/compare/branddata", async function (req, res) {
 
 app.get('/compare/:id', async (req, res) => {  // Correctly define the route to accept an 'id' parameter
    try {
-      console.log(req)
        const deviceId = req.params.id;  // Correctly retrieve the 'id' from the route parameters
-       console.log("Requested device ID:", deviceId);
+      //  console.log("Requested device ID:", deviceId);
        const deviceDetails = await gsmarena.catalog.getBrand(deviceId);
       //  console.log(deviceDetails)
        res.json(deviceDetails);
@@ -99,7 +101,20 @@ app.get('/compare/:id', async (req, res) => {  // Correctly define the route to 
    }
 });
 
-////???/
+////details
+app.get('/compare/details/:idDetails', async (req, res) => {  // Correctly define the route to accept an 'id' parameter
+   try {
+       const details = req.params.idDetails;  // Correctly retrieve the 'id' from the route parameters
+       console.log("This is details"+details);
+       const deviceDetails = await gsmarena.catalog.getDevice(details);
+      //  console.log(deviceDetails)
+       res.json(deviceDetails);
+   } catch (error) {
+       console.error("Failed to fetch device details:", error);
+       res.status(500).json({ error: "Failed to fetch device details" });
+   }
+});
+
 
 app.get("/compare.html", function(req, res) {
    
@@ -170,4 +185,3 @@ app.listen(3000, function() {
    console.log("Listening on port 3000...");
 });
 
-console.log(getphones());
