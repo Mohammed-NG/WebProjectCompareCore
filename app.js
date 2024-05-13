@@ -1,7 +1,14 @@
 const express = require("express");
+const bcrypt = require('bcrypt');
+const collection = require("./config");
 const gsmarena = require("gsmarena-api"); // Import gsmarena-api
 const app = express();
 const path = require('path');
+
+//convert data into json file
+app.use(express.json())
+
+app.use(express.urlencoded({extended: false}))
 
 async function getphones() {
    //testing
@@ -36,6 +43,13 @@ app.get("/signIn.html", function(req, res) {
    res.sendFile(path.join(accesPath,'signIn.html'))
    
 });
+
+app.get("/signUp.html", function(req, res) {
+   
+   res.sendFile(path.join(accesPath,'signUp.html'))
+   
+});
+
 app.get("/favorite.html", function(req, res) {
    
    res.sendFile(path.join(accesPath,'favorite.html'))
@@ -103,6 +117,32 @@ app.get("/compare.html", function(req, res) {
    res.sendFile(path.join(accesPath,'compare.html'))
    
 })
+
+
+// Register User
+app.post("/signup", async (req, res) => {
+
+   const data = {
+       Fname: req.body.fname,
+       Lname: req.body.lname,
+       id: Math.floor(Math.random()*1000000),
+       Email: req.body.email,
+       Password: req.body.password
+   }
+
+   // Check if the username already exists in the database
+   const existingUser = await collection.findOne({ Email: data.Email, id:data.id });
+
+   if (existingUser) {
+       res.send('User already exists.');
+   } else {
+       
+       const userdata = await collection.insertMany(data);
+       console.log(userdata);
+   }
+
+});
+
 
 app.listen(3000, function() {
    console.log("Listening on port 3000...");
