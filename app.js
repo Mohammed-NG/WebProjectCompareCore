@@ -47,6 +47,14 @@ app.get("/compare/data", async function (req, res) {
 })
 ///API database
 
+//get Brann List
+app.get("/compare/branddata", async function (req, res) {
+   const brands = await gsmarena.catalog.getBrands();
+   //const f=c[1]
+   console.log(brands);
+   res.json(brands)
+})
+
 app.get("/compare.html", function(req, res) {
    
    res.sendFile(path.join(accesPath,'compare.html'))
