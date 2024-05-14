@@ -8,9 +8,9 @@ const { Console } = require("console");
 const axios = require('axios');
 const bodyParser = require('body-parser')
 
-const OpenAI = require('openai');
+const OpenAI = require('openai-api');
 const openai = new OpenAI({ apiKey: 'sk-proj-uBggfYWxx8Jaj8dXb752T3BlbkFJr6eMajJ6afixIYzQotaK' });
-const { Console } = require("console");
+
 
 //convert data into json file
 app.use(express.json())
@@ -193,7 +193,7 @@ app.post("/login", async (req, res) => {
    }
 });
 
-app.post('/ask', async (req, res) => {
+app.post('/compare.html/ask', async (req, res) => {
 
 
    const { message } = req.body;
