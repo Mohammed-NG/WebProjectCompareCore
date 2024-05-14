@@ -112,3 +112,18 @@ header a{
     width: 25px;
   }
 
+
+   
+  input[type="password"] {
+    width: 750px; /* Adjust width to match the design */
+    padding: 10px 40px 10px 20px; /* Adjust padding to make space for the icon */
+    border: none; /* No border */
+    
+    
+  }
+
+    /* Placeholder styling */
+    input[type="password"]::placeholder {
+      color: #aaa; /* Light grey placeholder text, adjust as needed */
+    }
+    
