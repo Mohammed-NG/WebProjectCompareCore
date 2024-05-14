@@ -64,7 +64,7 @@ app.get("/compare/data", async function (req, res) {
 })
 ///API database
 
-//get Brann List
+//get Brand List
 app.get("/compare/branddata", async function (req, res) {
    const brands = await gsmarena.catalog.getBrands();
    //const f=c[1]

@@ -86,35 +86,59 @@ selectElement3.addEventListener('change', async () => {
 
         const imageElement = document.getElementById('pic1')
         console.log(device);
-        const newImageSrc = device.img;  // Update with the correct path
+        const newImageSrc = device.img; 
         imageElement.src = newImageSrc;
-        const paragraphElement = document.getElementById('Comp1');
-        paragraphElement.textContent;
-        // selectElement4.innerHTML = '';
-        // devices.forEach(device => {
-        //     console.log(device)
 
-        // });
+
+        for (let i = 0; i < device.quickSpec.length; i++) {
+            const paragraphId = `Comp${i + 1}`; // Construct the paragraph ID dynamically
+            const paragraphElement = document.getElementById(paragraphId);
+            if (paragraphElement) { // Check if the element exists
+                paragraphElement.textContent = device.quickSpec[i].value;
+            } else {
+                console.log(`Element with ID ${paragraphId} not found.`);
+            }
+        }
+
     } catch (error) {
         console.error('Error fetching devices:', error);
     }
 }
 )
+////////////////////////////////////////////////////
+selectElement4.addEventListener('change', async () => {
+    try {
+        const selectedId = selectElement4.value;
+        console.log(selectedId);
+        const deviceResponse = await fetch('/compare/details/'+selectedId);
+        if (!deviceResponse.ok) throw new Error('Failed to fetch devices');
+        const device = await deviceResponse.json();
+
+        const imageElement = document.getElementById('pic2')
+        console.log(device);
+        const newImageSrc = device.img; 
+        imageElement.src = newImageSrc;
 
 
+        for (let i = 0; i < device.quickSpec.length; i++) {
+            const paragraphId = `Comp${i + 13}`; // Construct the paragraph ID dynamically
+            const paragraphElement = document.getElementById(paragraphId);
+            if (paragraphElement) { // Check if the element exists
+                paragraphElement.textContent = device.quickSpec[i].value;
+            } else {
+                console.log(`Element with ID ${paragraphId} not found.`);
+            }
+        }
+
+    } catch (error) {
+        console.error('Error fetching devices:', error);
+    }
+}
+)
+///////////////////////////////////////////////////////////
 
 
 }
-
-
-// selectElement3.addEventListener('change', async () => {
-
-
-
-
-// }
-//////Details
-
 
 
 );
