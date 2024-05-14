@@ -97,13 +97,13 @@ document.addEventListener("DOMContentLoaded", async function () {
 selectElement3.addEventListener('change', async () => {
     try {
         const selectedId = selectElement3.value;
-        console.log(selectedId);
+       // console.log(selectedId);
         const deviceResponse = await fetch('/compare/details/'+selectedId);
         if (!deviceResponse.ok) throw new Error('Failed to fetch devices');
         const device = await deviceResponse.json();
 
         const imageElement = document.getElementById('pic1')
-        console.log(device);
+       // console.log(device);
         const newImageSrc = device.img; 
         imageElement.src = newImageSrc;
 
@@ -127,13 +127,13 @@ selectElement3.addEventListener('change', async () => {
 selectElement4.addEventListener('change', async () => {
     try {
         const selectedId = selectElement4.value;
-        console.log(selectedId);
+      //  console.log(selectedId);
         const deviceResponse = await fetch('/compare/details/'+selectedId);
         if (!deviceResponse.ok) throw new Error('Failed to fetch devices');
         const device = await deviceResponse.json();
 
         const imageElement = document.getElementById('pic2')
-        console.log(device);
+       // console.log(device);
         const newImageSrc = device.img; 
         imageElement.src = newImageSrc;
 

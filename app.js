@@ -32,7 +32,7 @@ async function getphones() {
    const device = await gsmarena.catalog.getDevice('apple_iphone_13_pro_max-11089');
    // console.log(device);
 }
-console.log(getphones());
+//console.log(getphones());
 
 const accesPath = path.join(__dirname, 'HTML');
 const public_path=__dirname;
@@ -76,7 +76,7 @@ app.get("/favorite.html", function(req, res) {
 app.get("/compare/data", async function (req, res) {
    const data = await gsmarena.deals.getDeals();
    //const f=c[1]
-   console.log(data);
+   // console.log(data);
    res.json(data)
 })
 ///API database
@@ -85,7 +85,7 @@ app.get("/compare/data", async function (req, res) {
 app.get("/compare/branddata", async function (req, res) {
    const brands = await gsmarena.catalog.getBrands();
    //const f=c[1]
-   console.log(brands);
+   //console.log(brands);
    res.json(brands)
 })
 
@@ -118,7 +118,7 @@ app.get('/compare/:id', async (req, res) => {  // Correctly define the route to 
 app.get('/compare/details/:idDetails', async (req, res) => {  // Correctly define the route to accept an 'id' parameter
    try {
        const details = req.params.idDetails;  // Correctly retrieve the 'id' from the route parameters
-       console.log("This is details"+details);
+       //console.log("This is details"+details);
        const deviceDetails = await gsmarena.catalog.getDevice(details);
       //  console.log(deviceDetails)
        res.json(deviceDetails);
@@ -160,7 +160,7 @@ app.post("/signup", async (req, res) => {
        const hashedPassword = await bcrypt.hash(data.Password, saltRounds);
        data.Password = hashedPassword;
        const userdata = await collection.insertMany([data]); // Pass an array to insertMany
-       console.log(userdata);
+       //console.log(userdata);
        res.redirect('/hello'); // Assuming '/hello' is your route to homepage
    }
 });
