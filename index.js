@@ -9,18 +9,29 @@ const axios = require('axios');
 const bodyParser = require('body-parser')
 
 const OpenAI = require('openai-api');
+const { METHODS } = require("http");
 const openai = new OpenAI({ apiKey: 'sk-proj-uBggfYWxx8Jaj8dXb752T3BlbkFJr6eMajJ6afixIYzQotaK' });
 
 
 
-app.use(bodyParser.json()); app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors(
+   {
+      origin: ["https://web-project-compare-core.vercel.app"],
+      methods: ["POST", "GET"],
+      credential: true
+
+   }
+));
+
+
+//app.use(bodyParser.json()); app.use(bodyParser.urlencoded({ extended: true }));
 
 //convert data into json file
-//app.use(express.json())
+app.use(express.json())
 
-//app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({extended: false}))
 
-//app.use(express.static("public"));
+app.use(express.static("public"));
 
 
 
