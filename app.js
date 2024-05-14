@@ -193,7 +193,7 @@ app.post("/login", async (req, res) => {
    }
 });
 
-app.post('/compare.html/ask', async (req, res) => {
+app.post('/compare.html/ask/:message', async (req, res) => {
 
 
    const { message } = req.body;
