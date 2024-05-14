@@ -1,3 +1,17 @@
+
+
+async function generateChatResponse(message) {
+    try {
+       const response = await fetch('/compare/ask' + message );
+       console.log("AA")
+       return response.data.reply;
+       console.log("CC")
+    } catch (error) {
+       console.error('Error fetching response from ChatGPT API:', error);
+       return 'An error occurred while fetching response';
+    }
+ }
+
 document.addEventListener("DOMContentLoaded", async function () {
     const selectElement1 = document.getElementById("typeodDeviceis1");
     const selectElement3 = document.getElementById("typeodDeviceis3");
@@ -31,7 +45,11 @@ document.addEventListener("DOMContentLoaded", async function () {
                     // console.log(device)
                     const option = new Option(device.name, device.id);
                     selectElement3.appendChild(option);
-                });
+
+                })
+                console.log("gpt ??????")
+                console.log(generateChatResponse("MESSI IS GREATER THAN CR7"))
+                ;
             } catch (error) {
                 console.error('Error fetching devices:', error);
             }

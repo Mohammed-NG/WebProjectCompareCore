@@ -4,11 +4,28 @@ const collection = require("./config");
 const gsmarena = require("gsmarena-api"); // Import gsmarena-api
 const app = express();
 const path = require('path');
+const { Console } = require("console");
+const axios = require('axios');
+const bodyParser = require('body-parser')
+
+const OpenAI = require('openai-api');
+const openai = new OpenAI({ apiKey: 'sk-proj-uBggfYWxx8Jaj8dXb752T3BlbkFJr6eMajJ6afixIYzQotaK' });
+
 
 //convert data into json file
 app.use(express.json())
 
 app.use(express.urlencoded({extended: false}))
+
+app.use(express.static("public"));
+
+//convert data into json file
+app.use(express.json())
+
+app.use(express.urlencoded({extended: false}))
+
+app.use(express.static("public"));
+
 
 async function getphones() {
    //testing
@@ -21,7 +38,7 @@ const accesPath = path.join(__dirname, 'HTML');
 const public_path=__dirname;
 
 const logRequest = function(req, res, next) {
-   console.log('Request: ${req.method} for ${req.path}');
+   console.log('Request: ${req.method} for ${req.path} ');
    next();
 };
 
@@ -121,27 +138,80 @@ app.get("/compare.html", function(req, res) {
 
 // Register User
 app.post("/signup", async (req, res) => {
-
    const data = {
        Fname: req.body.fname,
        Lname: req.body.lname,
        id: Math.floor(Math.random()*1000000),
        Email: req.body.email,
-       Password: req.body.password
-   }
+       Password: req.body.password // Make sure this matches everywhere it's used
+   };
 
-   // Check if the username already exists in the database
-   const existingUser = await collection.findOne({ Email: data.Email, id:data.id });
+   // Check if the user already exists in the database
+   const existingUser = await collection.findOne({ Email: data.Email });
 
    if (existingUser) {
+       console.log("Interesting");
        res.send('User already exists.');
    } else {
-       
-       const userdata = await collection.insertMany(data);
+       if (!data.Password) {
+           return res.status(400).send('Password is required.');
+       }
+       const saltRounds = 10;
+       const hashedPassword = await bcrypt.hash(data.Password, saltRounds);
+       data.Password = hashedPassword;
+       const userdata = await collection.insertMany([data]); // Pass an array to insertMany
        console.log(userdata);
+       res.redirect('/hello'); // Assuming '/hello' is your route to homepage
+   }
+});
+
+
+
+app.post("/login", async (req, res) => {
+   try {
+      console.log("A")
+       const check = await collection.findOne({ Email: req.body.email });
+       console.log("B")
+       if (!check) {
+           res.send("User name cannot found")
+       }
+       console.log("C")
+
+       // Compare the hashed password from the database with the plaintext password
+       const isPasswordMatch = await bcrypt.compare(req.body.password, check.Password);
+       console.log(isPasswordMatch)
+       console.log(check)
+       if (!isPasswordMatch) {
+           res.send("A");
+       }
+       else {
+           res.redirect("/hello");
+       }
+   }
+   catch {
+    res.send("check");   
+   }
+});
+
+app.post('/compare.html/ask/:message', async (req, res) => {
+
+
+   const { message } = req.body;
+   try {
+     const response = await openai.complete({
+       engine: 'text-davinci-002',
+       prompt: message,
+       maxTokens: 150,
+     });
+     res.json({ reply: response.choices[0].text.trim() });
+   } catch (error) {
+     console.error('Error:', error);
+     res.status(500).json({ error: 'An error occurred' });
    }
 
 });
+
+
 
 
 app.listen(3000, function() {
