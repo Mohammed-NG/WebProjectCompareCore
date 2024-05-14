@@ -46,6 +46,10 @@ app.use(logRequest);
 
 app.use(express.static(public_path));
 
+app.get("/", function(req, res) {
+   res.sendFile(path.join(accesPath,'Homepage.html'))
+});
+
 app.get("/hello", function(req, res) {
    res.sendFile(path.join(accesPath,'Homepage.html'))
 });
