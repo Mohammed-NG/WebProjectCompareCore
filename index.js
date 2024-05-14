@@ -12,19 +12,17 @@ const OpenAI = require('openai-api');
 const openai = new OpenAI({ apiKey: 'sk-proj-uBggfYWxx8Jaj8dXb752T3BlbkFJr6eMajJ6afixIYzQotaK' });
 
 
-//convert data into json file
-app.use(express.json())
 
-app.use(express.urlencoded({extended: false}))
+app.use(bodyParser.json()); app.use(bodyParser.urlencoded({ extended: true }));
+
+//convert data into json file
+//app.use(express.json())
+
+//app.use(express.urlencoded({extended: false}))
 
 app.use(express.static("public"));
 
-//convert data into json file
-app.use(express.json())
 
-app.use(express.urlencoded({extended: false}))
-
-app.use(express.static("public"));
 
 
 async function getphones() {
