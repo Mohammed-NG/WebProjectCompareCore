@@ -52,9 +52,14 @@ app.get("/hello", function(req, res) {
 
 app.get("/Homepage.html", function(req, res) {
    res.sendFile(path.join(accesPath,'Homepage.html'))
+});
+
+/*
+app.get("/Homepage.html", function(req, res) {
+   res.sendFile(path.join(accesPath,'Homepage.html'))
    res.status(200).json({field: "value"})
 });//isn't this the same as above?
-
+*/
 app.get("/signIn.html", function(req, res) {
    
    res.sendFile(path.join(accesPath,'signIn.html'))
@@ -173,7 +178,7 @@ app.post("/login", async (req, res) => {
        const check = await collection.findOne({ Email: req.body.email });
        console.log("B")
        if (!check) {
-           res.send("User name cannot found")
+           alert("User not found")
        }
        console.log("C")
 
@@ -182,8 +187,8 @@ app.post("/login", async (req, res) => {
        console.log(isPasswordMatch)
        console.log(check)
        if (!isPasswordMatch) {
-           res.send("A");
-       }
+         alert("Wrong Password")
+      }
        else {
            res.redirect("/hello");
        }
