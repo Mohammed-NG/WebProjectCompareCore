@@ -214,11 +214,11 @@ app.post("/login", async (req, res) => {
 app.post('/compare/devices', async (req, res) => {
    try {
        const { device1, device2 } = req.body;
-       
+       console.log(device1)
        const prompt = `Please provide a summary comparison of ${device1.name} and ${device2.name}.`;
 
        const response = await openai.complete({
-           engine: 'text-davinci-003',  // Make sure this engine is still available
+           engine: 'gpt-3.5-turbo',  // Make sure this engine is still available
            prompt: prompt,
            maxTokens: 150,
        });

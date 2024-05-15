@@ -16,7 +16,6 @@
 function compareSpecificDevices() {
     const device1 = { name: "iPhone 13" };  // Proper object format
     const device2 = { name: "Galaxy Note 10" };  // Proper object format
-
     fetch('/compare/devices', {
         method: 'POST',
         headers: {
