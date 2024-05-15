@@ -14,8 +14,9 @@
 
 // Example using Fetch API
 function compareSpecificDevices() {
-    const device1 = { name: "iPhone 13" };  // Proper object format
-    const device2 = { name: "Galaxy Note 10" };  // Proper object format
+    const device1 = 'iPhone 13';
+    const device2 = 'Galaxy Note 10';
+
     fetch('/compare/devices', {
         method: 'POST',
         headers: {
@@ -23,19 +24,18 @@ function compareSpecificDevices() {
         },
         body: JSON.stringify({ device1, device2 })
     })
-    .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
-        return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
+        // Display the summary to the user
         console.log('Comparison Summary:', data.comparisonSummary);
         document.getElementById('comparisonResult').innerText = data.comparisonSummary;
     })
     .catch(error => {
         console.error('Error comparing devices:', error);
-        document.getElementById('comparisonResult').innerText = 'Error: ' + error.message;
+        document.getElementById('comparisonResult').innerText = 'Failed to compare devices';
     });
 }
+
 
 
 // If you need any initialization to be done after the document loads

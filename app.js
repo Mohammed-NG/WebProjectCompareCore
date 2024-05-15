@@ -9,15 +9,10 @@ const axios = require('axios');
 const bodyParser = require('body-parser')
 
 const OpenAI = require('openai-api');
-const openai = new OpenAI({ apiKey: 'sk-proj-uBggfYWxx8Jaj8dXb752T3BlbkFJr6eMajJ6afixIYzQotaK' });
+const OPENAI_API_KEY = 'sk-proj-uBggfYWxx8Jaj8dXb752T3BlbkFJr6eMajJ6afixIYzQotaK';
+const openai = new OpenAI(OPENAI_API_KEY);
 
 
-//convert data into json file
-app.use(express.json())
-
-app.use(express.urlencoded({extended: false}))
-
-app.use(express.static("public"));
 
 //convert data into json file
 app.use(express.json())
@@ -26,6 +21,34 @@ app.use(express.urlencoded({extended: false}))
 
 app.use(express.static("public"));
 
+//convert data into json file
+app.use(express.json())
+
+app.use(express.urlencoded({extended: false}))
+
+app.use(express.static("public"));
+
+
+
+app.post('/compare/devices', async (req, res) => {
+   const { device1, device2 } = req.body;  // Expect device names as strings in the request body
+
+   const prompt = `Provide a comparison summary between ${device1} and ${device2}.`;
+
+   try {
+       const response = await openai.complete({
+           engine: 'gpt-3.5-turbo-0125',  // Use the latest available model suitable for your task
+           prompt: prompt,
+           maxTokens: 150
+       });
+
+       // Send the API response back to the client
+       res.json({ comparisonSummary: response.choices[0].text.trim() });
+   } catch (error) {
+       console.error('Failed to fetch comparison from OpenAI:', error);
+       res.status(500).json({ error: 'Failed to process comparison' });
+   }
+});
 
 async function getphones() {
    //testing
@@ -211,24 +234,6 @@ app.post("/login", async (req, res) => {
 
 // });
 
-app.post('/compare/devices', async (req, res) => {
-   try {
-       const { device1, device2 } = req.body;
-       console.log(device1)
-       const prompt = `Please provide a summary comparison of ${device1.name} and ${device2.name}.`;
-
-       const response = await openai.complete({
-           engine: 'gpt-3.5-turbo',  // Make sure this engine is still available
-           prompt: prompt,
-           maxTokens: 150,
-       });
-
-       res.json({ comparisonSummary: response.choices[0].text.trim() });
-   } catch (error) {
-       console.error('Failed to fetch comparison from OpenAI:', error);
-       res.status(500).json({ error: 'Failed to process comparison' });
-   }
-});
 
 
 
