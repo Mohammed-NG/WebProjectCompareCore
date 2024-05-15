@@ -193,23 +193,44 @@ app.post("/login", async (req, res) => {
    }
 });
 
-app.post('/compare.html/ask/:message', async (req, res) => {
+// app.post('/compare.html/ask/:message', async (req, res) => {
 
 
-   const { message } = req.body;
+//    const { message } = req.body;
+//    try {
+//      const response = await openai.complete({
+//        engine: 'text-davinci-002',
+//        prompt: message,
+//        maxTokens: 150,
+//      });
+//      res.json({ reply: response.choices[0].text.trim() });
+//    } catch (error) {
+//      console.error('Error:', error);
+//      res.status(500).json({ error: 'An error occurred' });
+//    }
+
+// });
+
+app.post('/compare/devices', async (req, res) => {
    try {
-     const response = await openai.complete({
-       engine: 'text-davinci-002',
-       prompt: message,
-       maxTokens: 150,
-     });
-     res.json({ reply: response.choices[0].text.trim() });
-   } catch (error) {
-     console.error('Error:', error);
-     res.status(500).json({ error: 'An error occurred' });
-   }
+       const { device1, device2 } = req.body;
+       
+       const prompt = `Please provide a summary comparison of ${device1.name} and ${device2.name}.`;
 
+       const response = await openai.complete({
+           engine: 'text-davinci-003',  // Make sure this engine is still available
+           prompt: prompt,
+           maxTokens: 150,
+       });
+
+       res.json({ comparisonSummary: response.choices[0].text.trim() });
+   } catch (error) {
+       console.error('Failed to fetch comparison from OpenAI:', error);
+       res.status(500).json({ error: 'Failed to process comparison' });
+   }
 });
+
+
 
 
 
