@@ -9,15 +9,10 @@ const axios = require('axios');
 const bodyParser = require('body-parser')
 
 const OpenAI = require('openai-api');
-const openai = new OpenAI({ apiKey: 'sk-proj-uBggfYWxx8Jaj8dXb752T3BlbkFJr6eMajJ6afixIYzQotaK' });
+const OPENAI_API_KEY = 'sk-proj-uBggfYWxx8Jaj8dXb752T3BlbkFJr6eMajJ6afixIYzQotaK';
+const openai = new OpenAI(OPENAI_API_KEY);
 
 
-//convert data into json file
-app.use(express.json())
-
-app.use(express.urlencoded({extended: false}))
-
-app.use(express.static("public"));
 
 //convert data into json file
 app.use(express.json())
@@ -26,6 +21,34 @@ app.use(express.urlencoded({extended: false}))
 
 app.use(express.static("public"));
 
+//convert data into json file
+app.use(express.json())
+
+app.use(express.urlencoded({extended: false}))
+
+app.use(express.static("public"));
+
+
+
+app.post('/compare/devices', async (req, res) => {
+   const { device1, device2 } = req.body;  // Expect device names as strings in the request body
+
+   const prompt = `Provide a comparison summary between ${device1} and ${device2}.`;
+
+   try {
+       const response = await openai.complete({
+           engine: 'gpt-3.5-turbo-0125',  // Use the latest available model suitable for your task
+           prompt: prompt,
+           maxTokens: 150
+       });
+
+       // Send the API response back to the client
+       res.json({ comparisonSummary: response.choices[0].text.trim() });
+   } catch (error) {
+       console.error('Failed to fetch comparison from OpenAI:', error);
+       res.status(500).json({ error: 'Failed to process comparison' });
+   }
+});
 
 async function getphones() {
    //testing
@@ -198,23 +221,26 @@ app.post("/login", async (req, res) => {
    }
 });
 
-app.post('/compare.html/ask/:message', async (req, res) => {
+// app.post('/compare.html/ask/:message', async (req, res) => {
 
 
-   const { message } = req.body;
-   try {
-     const response = await openai.complete({
-       engine: 'text-davinci-002',
-       prompt: message,
-       maxTokens: 150,
-     });
-     res.json({ reply: response.choices[0].text.trim() });
-   } catch (error) {
-     console.error('Error:', error);
-     res.status(500).json({ error: 'An error occurred' });
-   }
+//    const { message } = req.body;
+//    try {
+//      const response = await openai.complete({
+//        engine: 'text-davinci-002',
+//        prompt: message,
+//        maxTokens: 150,
+//      });
+//      res.json({ reply: response.choices[0].text.trim() });
+//    } catch (error) {
+//      console.error('Error:', error);
+//      res.status(500).json({ error: 'An error occurred' });
+//    }
 
-});
+// });
+
+
+
 
 
 
