@@ -37,11 +37,17 @@ What sets CompareCore apart from other comparison platforms is its integration o
 - **Database**: MongoDB for storing user data and device information
 - **API Integration**: GSM Arena API for fetching device specifications and deals
 - **Authentication**: bcrypt for secure password hashing
+
+## Shortcomings and Future Considerations
+
+### Shortcomings
+
+- **Data Accuracy**: The platform relies on third-party APIs for data, which might sometimes be outdated or inaccurate.
+- **Limited Device Categories**: Currently, the platform supports a limited range of device categories. Expanding to include more categories could enhance its utility.
+
+### Future Considerations
+
 - **AI Integration**: OpenAI API for generating user insights and recommendations
-
-## Implementation Details
-
-### Sign Up Page (signUp.html)
-
-- The sign-up page allows new users to create an account by providing their personal information.
-- The form is styled using Bootstrap and custom CSS, ensuring a responsive and visually appealing design.
+- **Enhanced AI Features**: Incorporate more advanced AI-driven recommendations and insights to better assist users in making informed decisions.
+- **User Reviews and Ratings**: Integrate a system for user reviews and ratings to provide a more comprehensive comparison experience.
+- **Mobile App Development**: Develop a mobile application to provide users with on-the-go access to device comparisons and recommendations.
