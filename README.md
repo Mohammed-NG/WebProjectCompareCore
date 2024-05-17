@@ -4,19 +4,19 @@
 
 ### Problem Statement
 
-In today's market, consumers face a plethora of choices when it comes to electronic devices, making it challenging to make informed purchasing decisions. With rapidly evolving technology and a multitude of brands and models, comparing devices based on specifications, features, and pricing can be overwhelming.
+In today's market, there are so many electronic devices to choose from that it can be hard to decide which one to buy. With new technology coming out all the time and lots of different brands and models available, comparing the specs, features, and prices of these devices can be really confusing and difficult.
 
 ### Solution Approach
 
-CompareCore aims to simplify the decision-making process by providing a comprehensive platform for comparing electronic devices. By aggregating detailed specifications, features, and user reviews, CompareCore allows users to make side-by-side comparisons of multiple devices, ensuring they have all the information needed to make an informed purchase.
+CompareCore aims to make it easier to decide which electronic device to buy by offering a complete platform for comparing them. It gathers detailed specs, features, and user reviews, allowing users to compare multiple devices side-by-side, so they have all the information they need to make a smart choice.
 
 ### Unique Selling Proposition
 
-What sets CompareCore apart from other comparison platforms is its integration of real-time data from reliable sources like GSM Arena and the inclusion of AI-driven insights. Our platform is designed to be user-friendly, offering a seamless experience for both tech-savvy users and those who may not be as familiar with the intricacies of electronic devices.
+What sets CompareCore apart from other comparison platforms is its integration of real-time data from reliable sources like GSM Arena. Our platform is designed to be user-friendly, offering a seamless experience for both tech-savvy users and those who may not be as familiar with the intricacies of electronic devices.
 
 ## How It Works
 
-### Live Demo of Core Features
+### Live Demo of CompareCore Features
 
 1. **Device Comparison**
    - Users can select up to two devices to compare from a wide range of brands and models.
@@ -32,7 +32,7 @@ What sets CompareCore apart from other comparison platforms is its integration o
 
 ### Technology Stack
 
-- **Frontend**: HTML, CSS, Bootstrap for responsive and modern UI design
+- **Frontend**: HTML, CSS, JavaScript,Bootstrap for responsive and modern UI design
 - **Backend**: Node.js, Express.js for handling server-side logic and API requests
 - **Database**: MongoDB for storing user data and device information
 - **API Integration**: GSM Arena API for fetching device specifications and deals
