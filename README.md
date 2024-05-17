@@ -50,4 +50,3 @@ What sets CompareCore apart from other comparison platforms is its integration o
 - **AI Integration**: OpenAI API for generating user insights and recommendations
 - **Enhanced AI Features**: Incorporate more advanced AI-driven recommendations and insights to better assist users in making informed decisions.
 - **User Reviews and Ratings**: Integrate a system for user reviews and ratings to provide a more comprehensive comparison experience.
-- **Mobile App Development**: Develop a mobile application to provide users with on-the-go access to device comparisons and recommendations.
