@@ -57,7 +57,7 @@ async function getphones() {
 }
 //console.log(getphones());
 
-const accesPath = path.join(__dirname, 'HTML');
+const accesPath = path.join(__dirname, 'pages');
 const public_path=__dirname;
 
 const logRequest = function(req, res, next) {
@@ -68,6 +68,11 @@ const logRequest = function(req, res, next) {
 app.use(logRequest);
 
 app.use(express.static(public_path));
+
+
+app.get("/", function(req, res) {
+   res.sendFile(path.join(accesPath,'Homepage.html'))
+});
 
 app.get("/hello", function(req, res) {
    res.sendFile(path.join(accesPath,'Homepage.html'))
