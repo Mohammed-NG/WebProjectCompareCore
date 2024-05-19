@@ -11,6 +11,8 @@ const bodyParser = require('body-parser')
 const OpenAI = require('openai-api');
 const OPENAI_API_KEY = 'sk-proj-uBggfYWxx8Jaj8dXb752T3BlbkFJr6eMajJ6afixIYzQotaK';
 const openai = new OpenAI(OPENAI_API_KEY);
+const port = process.env.PORT || 10000;
+
 
 
 
