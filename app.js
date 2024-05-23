@@ -21,7 +21,7 @@ app.use(express.json())
 
 app.use(express.urlencoded({extended: false}))
 
-app.use(express.static("public"));
+app.use(express.static("pages"));
 
 //convert data into json file
 app.use(express.json())
@@ -73,6 +73,7 @@ app.use(express.static(public_path));
 
 
 app.get("/", function(req, res) {
+   console.log("awami")
    res.sendFile(path.join(accesPath,'Homepage.html'))
 });
 
